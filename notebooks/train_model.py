@@ -8,7 +8,7 @@ from sklearn.metrics import mean_absolute_error, r2_score
 import joblib
 
 # 1. Load & Clean Data [cite: 19]
-df = pd.read_csv('weatherHistory.csv')
+df = pd.read_csv('C:\Data_sci_Final\data\weatherHistory.csv')
 
 # จัดการ Outliers: ค่า Pressure เป็น 0 ให้แทนด้วย Median [cite: 21]
 median_pressure = df.loc[df['Pressure (millibars)'] > 0, 'Pressure (millibars)'].median()
@@ -45,6 +45,6 @@ print(f"MAE: {mean_absolute_error(y_test, predictions):.4f}")
 print(f"R2 Score: {r2_score(y_test, predictions):.4f}")
 
 # 5. Save Model สำหรับ Deployment [cite: 7, 35]
-joblib.dump(best_model, 'weather_model.pkl')
+joblib.dump(best_model, 'weather_model.pkl', compress=3)
 
 print("Done")
